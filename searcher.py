@@ -60,7 +60,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			result = []
 			for text in texts:
 				result.append(text.text.encode('ascii','ignore'))
-			print(result)
+			result = ["In June 2006, Gates announced that he would be transitioning from full-time work at Microsoft to part-time work and full-time work at the Bill & Melinda Gates Foundation"]
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
