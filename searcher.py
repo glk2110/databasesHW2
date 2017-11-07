@@ -9,7 +9,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		relationName = "Located_In"
 	elif relation == 3:
 		relationName = "OrgBased_In"
-	else
+	else:
 		relationName = "Work_For"
 
 	print("Parameters:")
