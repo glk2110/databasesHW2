@@ -33,7 +33,6 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			q=query,
 			cx=engineID,
 		).execute()
-		startNum = startNum + 10
 		print("=========== Iteration: " + str(iterationNum) + " - Query: " + query + " ===========")
 		for i in range(10):
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
