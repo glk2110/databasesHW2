@@ -37,7 +37,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		for i in range(10):
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
 			print("Processing: " + solution)
-			print("Relations extracted from this website: " + extractedRelations + " (Overall: " + totalExtractedRelations + ")")
+			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
 
