@@ -70,7 +70,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"parse.model": "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz", #Must be present for the second pipeline!
 				"ner.useSUTime": "0"
 				}
-			doc = client.annotate(text=result, properties=properties2)
+			doc = client.annotate(text=result, properties=properties1)
 			for relation in doc.sentences[0].relations:
 				print(relation)
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
