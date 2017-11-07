@@ -71,9 +71,9 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"ner.useSUTime": "0"
 				}
 			doc = client.annotate(text=result, properties=properties2)
-			if doc.sentences[0].relations:
-				print(doc.sentences[0].relations[0])
-				print(doc.tree_as_string())
+			if doc.sentences:
+				if doc.sentences[0].relations:
+					print(doc.sentences[0].relations[0])
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
