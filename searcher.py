@@ -5,6 +5,14 @@ import sys
 from bs4 import BeautifulSoup
 import urllib
 
+def isVisible(input1):
+	if input1.parent.name in ['style', 'script', 'head', 'title', '[document]']:
+        return False
+    elif re.match('<!--.*-->', str(input1.encode('utf-8'))):
+        return False
+    else
+    	return True
+
 def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	if int(relation) == 1:
 		relationName = "Live_In"
@@ -41,13 +49,13 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
 			print("Processing: " + solution)
 			r = urllib.urlopen(solution).read()
-			soup = BeautifulSoup(r, 'html.parser')
+			soup = BeautifulSoup(r)
 			texts = soup.findAll(text=True)
-			print(texts)
+			result = filter(isVisible, texts)
+			print(list(result))
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
-
 
 def main():
 	# Build a service object for interacting with the API. Visit
