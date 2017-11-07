@@ -3,6 +3,7 @@
 from googleapiclient.discovery import build
 import sys
 from bs4 import BeautifulSoup
+import urllib
 
 def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	if int(relation) == 1:
@@ -39,6 +40,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		for i in range(10):
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
 			print("Processing: " + solution)
+			r = urllib.urlopen(solution).read()
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
