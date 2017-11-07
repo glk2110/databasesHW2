@@ -49,7 +49,11 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		for i in range(10):
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
 			print("Processing: " + solution)
-			r = urllib.urlopen(solution).read()
+			try:
+				r = urllib.urlopen(solution).read()
+			except Exception as e:
+				print("Program could not extract text content from this web site; moving to the next one...")
+				continue
 			soup = BeautifulSoup(r)
 			texts = soup.findAll(text=True)
 			result = filter(isVisible, texts)
