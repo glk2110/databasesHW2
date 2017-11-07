@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from googleapiclient.discovery import build
+import sys
 
 def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	if relation == 1:
@@ -21,6 +22,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	print("# of tuples 	= " + str(k))
 	iterationNum = 1
 	goodTuples = 0
+	startNum = 1
 	while goodTuples < k:
 		service = build("customsearch", "v1",
 		developerKey=apiKey)
@@ -28,13 +30,15 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		res = service.cse().list(
 			q=query,
 			cx=engineID,
+			start=startNum,
 		).execute()
+		startNum = startNum + 10
 		print("=========== Iteration: " + str(iterationNum) + " - Query: " + query + " ===========")
 		for i in range(10):
 			print("Result " + str(i + 1) + "\n")
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
 			title =  res[u'items'][i][u'title'].encode('ascii','ignore')
-			print(" URL: " +solution)
+			print(" URL: " + solution)
 			print(" Title: "+ title)
 			summary = res[u'items'][i][u'snippet'].encode('ascii','ignore')
 			print(" Summary: " + summary)
