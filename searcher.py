@@ -60,7 +60,6 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			result = []
 			for text in texts:
 				result.append(text.text.encode('ascii','ignore'))
-			result = ["William Henry Gates III (born October 28, 1955) is an American business magnate, investor, author, philanthropist, and co-founder of the Microsoft Corporation along with Paul Allen.[2][3]","In 1975, Gates and Allen launched Microsoft, which became the world's largest PC software company. During his career at Microsoft, Gates held the positions of chairman, CEO and chief software architect, while also being the largest individual shareholder until May 2014.[4][a] Gates stepped down as chief executive officer of Microsoft in January 2000, but he remained as chairman and created the position of chief software architect for himself.[7] In June 2006, Gates announced that he would be transitioning from full-time work at Microsoft to part-time work and full-time work at the Bill & Melinda Gates Foundation.[8] He gradually transferred his duties to Ray Ozzie and Craig Mundie.[9] He stepped down as chairman of Microsoft in February 2014 and assumed a new post as technology adviser to support the newly appointed CEO Satya Nadella.[10]"]
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
@@ -73,8 +72,10 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"ner.useSUTime": "0"
 				}
 			doc = client.annotate(text=result, properties=properties1)
-			print(doc.sentences[0].relations[0])
-			print(doc.tree_as_string())
+			newsentence = ""
+			for x in doc.sentences[0].tokens:
+				newsentence += " " + x.word
+			print(newsentence)
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
