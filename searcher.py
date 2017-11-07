@@ -8,10 +8,10 @@ import urllib
 def isVisible(input1):
 	if input1.parent.name in ['style', 'script', 'head', 'title', '[document]']:
 		return False
-    elif re.match('<!--.*-->', str(input1.encode('utf-8'))):
-    	return False
-    else:
-    	return True
+	elif re.match('<!--.*-->', str(input1.encode('utf-8'))):
+		return False
+	else:
+		return True
 
 def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	if int(relation) == 1:
