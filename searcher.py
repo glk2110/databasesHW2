@@ -60,14 +60,19 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			result = filter(isVisible, texts)
 			result = ["Bill Gates works at Microsoft.", "Sergei works at Google."]
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
-			properties = {
+			properties1 = {
+				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
+				"parse.model": "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz", #Must be present for the second pipeline!
+				"ner.useSUTime": "0"
+				}
+			properties2 = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner,parse,relation", #Second pipeline; leave out parse,relation for first
 				"parse.model": "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz", #Must be present for the second pipeline!
 				"ner.useSUTime": "0"
 				}
-			doc = client.annotate(text=result, properties=properties)
+			doc = client.annotate(text=result, properties=properties1)
 			print(doc.sentences[0].relations[0])
-			print(doc.tree_as_string())
+			#print(doc.tree_as_string())
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
