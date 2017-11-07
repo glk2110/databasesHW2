@@ -4,11 +4,11 @@ from googleapiclient.discovery import build
 import sys
 
 def makeQuery(apiKey, engineID, relation, threshold, query, k):
-	if relation == 1:
+	if int(relation) == 1:
 		relationName = "Live_In"
-	elif relation == 2:
+	elif int(relation) == 2:
 		relationName = "Located_In"
-	elif relation == 3:
+	elif int(relation) == 3:
 		relationName = "OrgBased_In"
 	else:
 		relationName = "Work_For"
