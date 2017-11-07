@@ -59,7 +59,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			#texts = soup.p.findAll(text=True)
 			#result = filter(isVisible, texts)
 			#print(result)
-			result = ''.join(text.strip() for text in soup.p.find_all(text=True))
+			result = ''.join(text.strip() for text in soup.get_text())
 			print(result)
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
