@@ -60,7 +60,6 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			result = []
 			for text in texts:
 				result.append(text.text.encode('ascii','ignore'))
-			result = ["In June 2006, Gates announced that he would be transitioning from full-time work at Microsoft to part-time work and full-time work at the Bill & Melinda Gates Foundation"]
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
@@ -72,8 +71,9 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"ner.useSUTime": "0"
 				}
 			doc = client.annotate(text=result, properties=properties2)
-			print(doc.sentences[0].relations[0])
-			print(doc.tree_as_string())
+			if doc.sentences[0].relations[0]:
+				print(doc.sentences[0].relations[0])
+				print(doc.tree_as_string())
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
