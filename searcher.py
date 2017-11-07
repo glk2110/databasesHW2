@@ -56,7 +56,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				print("Program could not extract text content from this web site; moving to the next one...")
 				continue
 			soup = BeautifulSoup(r)
-			texts = soup.prettify()
+			texts = soup.find_all('p')[0:5]
 			print(texts)
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
