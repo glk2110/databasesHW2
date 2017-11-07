@@ -41,8 +41,9 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
 			print("Processing: " + solution)
 			r = urllib.urlopen(solution).read()
-			soup = BeautifulSoup(r)
-			print(soup.findAll(text=True))
+			soup = BeautifulSoup(r, 'html.parser')
+			texts = soup.findAll(text=True)
+			print(texts)
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
