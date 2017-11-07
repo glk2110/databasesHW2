@@ -58,7 +58,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			soup = BeautifulSoup(r)
 			texts = soup.find_all(['h1','h2','h3','p'])
 			for text in texts:
-				print(text)
+				print(text.text)
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
