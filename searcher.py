@@ -16,7 +16,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	print("Parameters:")
 	print("Client Key	= " + apiKey)
 	print("Engine Key 	= " + engineID)
-	print("Relation		= " + relationName)
+	print("Relation 	= " + relationName)
 	print("Threshold 	= " + str(threshold))
 	print("Query 		= " + query)
 	print("# of tuples 	= " + str(k))
