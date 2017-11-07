@@ -58,7 +58,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			soup = BeautifulSoup(r)
 			texts = soup.findAll(text=True)
 			result = filter(isVisible, texts)
-			result = ["gates works for microsoft", "williams facebook"]
+			result = ["Bill Gates works at Microsoft.", "Sergei works at Google."]
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner,parse,relation", #Second pipeline; leave out parse,relation for first
