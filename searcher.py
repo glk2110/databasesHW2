@@ -76,7 +76,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			rSentences = []
 			for s in doc.sentences:
 				if s.relations:
-					rSentences.add(s)
+					rSentences.append(s)
 			for sentence in rSentences:
 				for x in sentence.tokens:
 					newsentence += " " + x.word
