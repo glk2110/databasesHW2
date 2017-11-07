@@ -56,7 +56,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				print("Program could not extract text content from this web site; moving to the next one...")
 				continue
 			soup = BeautifulSoup(r)
-			texts = soup.findAll(text=True)
+			texts = soup.get_Text()
 			result = filter(isVisible, texts)
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties = {
@@ -65,8 +65,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"ner.useSUTime": "0"
 				}
 			doc = client.annotate(text=result, properties=properties)
-			if(doc):
-				print(doc.sentences[0].relations[0])
+			print(doc.sentences[0].relations[0])
 			print(doc.tree_as_string())
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
