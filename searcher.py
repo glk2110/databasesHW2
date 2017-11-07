@@ -2,6 +2,7 @@
 
 from googleapiclient.discovery import build
 import sys
+from bs4 import BeautifulSoup
 
 def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	if int(relation) == 1:
@@ -24,6 +25,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	goodTuples = 0
 	extractedRelations = 0
 	totalExtractedRelations = 0
+	tuples = {}
 	while goodTuples < int(k):
 		totalExtractedRelations = goodTuples
 		service = build("customsearch", "v1",
