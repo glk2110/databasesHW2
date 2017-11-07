@@ -22,27 +22,25 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	print("# of tuples 	= " + str(k))
 	iterationNum = 1
 	goodTuples = 0
-	startNum = 1
+	extractedRelations = 0
+	totalExtractedRelations = 0
 	while goodTuples < k:
+		totalExtractedRelations = goodTuples
 		service = build("customsearch", "v1",
 		developerKey=apiKey)
 
 		res = service.cse().list(
 			q=query,
 			cx=engineID,
-			start=startNum,
 		).execute()
 		startNum = startNum + 10
 		print("=========== Iteration: " + str(iterationNum) + " - Query: " + query + " ===========")
 		for i in range(10):
-			print("Result " + str(i + 1) + "\n")
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
-			title =  res[u'items'][i][u'title'].encode('ascii','ignore')
-			print(" URL: " + solution)
-			print(" Title: "+ title)
-			summary = res[u'items'][i][u'snippet'].encode('ascii','ignore')
-			print(" Summary: " + summary)
-			goodTuples = 100
+			print("Processing: " + solution)
+			print("Relations extracted from this website: " + extractedRelations + " (Overall: " + totalExtractedRelations + ")")
+		iterationNum += 1
+		goodTuples = 100
 
 
 def main():
