@@ -56,10 +56,11 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				print("Program could not extract text content from this web site; moving to the next one...")
 				continue
 			soup = BeautifulSoup(r)
-			texts = soup.p.findAll(text=True)
+			#texts = soup.p.findAll(text=True)
 			#result = filter(isVisible, texts)
 			#print(result)
-			print(''.join(text.strip() for text in soup.find_all(text=True, recursive=False)))
+			result = ''.join(text.strip() for text in soup.find_all(text=True, recursive=False))
+			print(result)
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
