@@ -4,6 +4,7 @@ from googleapiclient.discovery import build
 import sys
 from bs4 import BeautifulSoup
 import urllib
+import re
 
 def isVisible(input1):
 	if input1.parent.name in ['style', 'script', 'head', 'title', '[document]']:
