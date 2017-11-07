@@ -24,7 +24,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	goodTuples = 0
 	extractedRelations = 0
 	totalExtractedRelations = 0
-	while goodTuples < k:
+	while goodTuples < int(k):
 		totalExtractedRelations = goodTuples
 		service = build("customsearch", "v1",
 		developerKey=apiKey)
