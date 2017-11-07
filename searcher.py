@@ -53,7 +53,6 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			soup = BeautifulSoup(r)
 			texts = soup.findAll(text=True)
 			result = filter(isVisible, texts)
-			print(result)
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
