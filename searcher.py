@@ -5,6 +5,7 @@ import sys
 from bs4 import BeautifulSoup
 import urllib
 import re
+from NLPCore import NLPCoreClient
 
 def isVisible(input1):
 	if input1.parent.name in ['style', 'script', 'head', 'title', '[document]']:
@@ -57,6 +58,15 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			soup = BeautifulSoup(r)
 			texts = soup.findAll(text=True)
 			result = filter(isVisible, texts)
+			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
+			properties = {
+				"annotators": "tokenize,ssplit,pos,lemma,ner,parse,relation", #Second pipeline; leave out parse,relation for first
+				"parse.model": "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz", #Must be present for the second pipeline!
+				"ner.useSUTime": "0"
+				}
+			doc = client.annotate(text=text, properties=properties)
+			print(doc.sentences[0].relations[0])
+			print(doc.tree_as_string())
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
