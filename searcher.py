@@ -59,8 +59,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			texts = soup.p.findAll(text=True)
 			#result = filter(isVisible, texts)
 			#print(result)
-			print(''.join(text.strip() for text in soup.p.find_all(text=True, recursive=False)))
-			result = ["In June 2006, Gates announced that he would be transitioning from full-time work at Microsoft to part-time work and full-time work at the Bill & Melinda Gates Foundation"]
+			print(''.join(text.strip() for text in soup.find_all(text=True, recursive=False)))
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
