@@ -59,7 +59,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			texts = soup.find_all(['h1','h2','h3','p'])
 			result = []
 			for text in texts:
-				result.append(text.text)
+				result.append(text.text.encode('ascii','ignore'))
 			print(result)
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
