@@ -57,7 +57,8 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				continue
 			soup = BeautifulSoup(r)
 			texts = soup.find_all(['h1','h2','h3','p'])
-			print(texts)
+			result = texts.text
+			print(result)
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties1 = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
@@ -68,7 +69,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"parse.model": "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz", #Must be present for the second pipeline!
 				"ner.useSUTime": "0"
 				}
-			doc = client.annotate(text=texts, properties=properties1)
+			doc = client.annotate(text=result, properties=properties1)
 			#print(doc.sentences[0].relations[0])
 			#print(doc.tree_as_string())
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
