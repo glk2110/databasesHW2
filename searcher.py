@@ -42,7 +42,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			print("Processing: " + solution)
 			r = urllib.urlopen(solution).read()
 			soup = BeautifulSoup(r)
-			print(soup.get_text())
+			print(soup.findAll(text=True))
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
