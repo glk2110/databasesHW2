@@ -37,7 +37,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			cx=engineID,
 		).execute()
 		print("=========== Iteration: " + str(iterationNum) + " - Query: " + query + " ===========")
-		for i in range(10):
+		for i in range(1):
 			solution = res[u'items'][i][u'link'].encode('ascii','ignore')
 			print("Processing: " + solution)
 			r = urllib.urlopen(solution).read()
