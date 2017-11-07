@@ -82,8 +82,9 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				for x in sentence.tokens:
 					newsentence += " " + x.word
 				finalSentences.append(newsentence)
+			finalSentences = ["Bill Gates works at Microsoft.", "Sergei works at Google."]
 			doc2 = client.annotate(text=finalSentences, properties=properties2)
-
+			print(doc2.sentences[0].relations[0])
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
