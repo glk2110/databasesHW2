@@ -38,6 +38,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	extractedRelations = 0
 	totalExtractedRelations = 0
 	tuples = set()
+	queries = set()
 	while goodTuples < int(k):
 		totalExtractedRelations = goodTuples
 		service = build("customsearch", "v1",
@@ -117,11 +118,12 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		myTuples = list(tuples)
 		myTuples.sort(key=operator.itemgetter(1), reverse = True)
 		count = 0
+		queries.add(query)
 		for tup in myTuples:
-			if count == 0:
+			if count == 0 && enVa2 + " " + enVa1 not in queries:
 				query = enVa2 + " " + enVa1
+				count = 1
 			print("RelationType: " + tup[0] + "  | Confidence: " + str(tup[1]) + "		| Entity #1= " + tup[3] + " (" + tup[2] + ")	| Entity #2: " + tup[5] + " (" + tup[4] + ")")
-			count += 1
 		iterationNum += 1
 
 def main():
