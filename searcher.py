@@ -106,7 +106,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 						print("EntityValue1= " + enVa1 + " | EntityType2= " + enTy2 + " | EntityValue2= " + enVa2 + " |")
 						print("============== END OF RELATION DESC ==============")
 						if(float(confidence) >= float(threshold)):
-							tuples.add((relationName, confidence, enTy1, enVa1, enTy2, enVa2))
+							tuples.add((relationName, round(float(confidence),3), enTy1, enVa1, enTy2, enVa2))
 			totalExtractedRelations += extractedRelations
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		print("Pruning relations below threshold...")
