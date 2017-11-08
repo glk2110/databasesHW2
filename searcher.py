@@ -84,6 +84,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				finalSentences.append(newsentence)
 			finalSentences = ["Bill Gates works at Microsoft.", "Sergei works at Google."]
 			doc2 = client.annotate(text=finalSentences, properties=properties2)
+			list1 = []
 			for s1 in doc2.sentences:
 				list1.append(s1)
 			for s3 in list1:
