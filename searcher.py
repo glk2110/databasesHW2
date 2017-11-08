@@ -109,7 +109,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			for sentence in goodSentences:
 				newsentence = ""
 				for x in sentence.tokens:
-					newsentence += " " + x.word
+					newsentence += " " + x.word.encode('ascii','ignore')
 				finalSentences.append(newsentence)
 				print(newsentence)
 			doc2 = client.annotate(text=finalSentences, properties=properties2)
