@@ -161,19 +161,19 @@ def relationValid(relation, re, reName):
 	type2 = relation.entities[1].type
 	if int(re) == 1:
 		if((type1 == "PEOPLE" and type2 == "LOCATION") or (type1 == "LOCATION" and type2 == "PEOPLE")):
-			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"]))
+			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"])):
 				return True
 	elif int(re) == 2:
 		if((type1 == "LOCATION" and type2 == "LOCATION")):
-			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"]))
+			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"])):
 				return True
 	elif int(re) == 3:
 		if((type1 == "ORGANIZATION" and type2 == "LOCATION") or (type1 == "LOCATION" and type2 == "ORGANIZATION")):
-			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"]))
+			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"])):
 				return True
 	else:
 		if((type1 == "PEOPLE" and type2 == "ORGANIZATION") or (type1 == "ORGANIZATION" and type2 == "PEOPLE")):
-			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"]))
+			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"])):
 				return True
 	return False
 
