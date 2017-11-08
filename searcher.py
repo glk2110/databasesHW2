@@ -91,6 +91,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			for s3 in list1:
 				for s4 in s3.relations:
 					print("=============== EXTRACTED RELATION ===============")
+					print(s4)
 					newsentence1 = ""
 					for x1 in s3.tokens:
 						newsentence1 += " " + x1.word
