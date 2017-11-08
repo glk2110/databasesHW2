@@ -159,6 +159,8 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 def relationValid(relation, re):
 	type1 = relation.entities[0].type
 	type2 = relation.entities[1].type
+	print(type1)
+	print(type2)
 	if int(re) == 1:
 		if((type1 == "PERSON" and type2 == "LOCATION") or (type1 == "LOCATION" and type2 == "PERSON")):
 			return True
