@@ -107,11 +107,12 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 						print("============== END OF RELATION DESC ==============")
 						if(float(confidence) >= float(threshold)):
 							tuples.add((relationName, confidence, enTy1, enVa1, enTy2, enVa2))
-						print(len(tuples))
 			totalExtractedRelations += extractedRelations
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
-		iterationNum += 1
+		print("Pruning relations below threshold...")
 		goodTuples = len(tuples)
+		print("Number of tuples after pruning: " + str(goodTuples))
+		iterationNum += 1
 
 def main():
 	# Build a service object for interacting with the API. Visit
