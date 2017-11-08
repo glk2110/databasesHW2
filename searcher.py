@@ -76,7 +76,6 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				}
 			doc = client.annotate(text=result, properties=properties)
 			goodSentences = []
-			print(1)
 			for sen in doc.sentences:
 				tok1 = False
 				tok2 = False
@@ -112,9 +111,8 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				for x in sentence.tokens:
 					newsentence += " " + x.word.encode('ascii','ignore')
 				finalSentences.append(newsentence)
-			print(2)
+			print(finalSentences)
 			doc2 = client.annotate(text=finalSentences, properties=properties2)
-			print(3)
 			list1 = []
 			list2 = []
 			for s1 in doc2.sentences:
