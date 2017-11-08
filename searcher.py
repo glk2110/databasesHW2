@@ -105,14 +105,13 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 							tok2 = True
 				if tok1 == True and tok2 == True:
 					goodSentences.add(sen)
-			newsentence = ""
 			finalSentences = []
 			for sentence in goodSentences:
+				newsentence = ""
 				for x in sentence.tokens:
 					newsentence += " " + x.word
 				finalSentences.append(newsentence)
 				print(newsentence)
-			print(finalSentences)
 			doc2 = client.annotate(text=finalSentences, properties=properties2)
 			list1 = []
 			list2 = []
