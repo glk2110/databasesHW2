@@ -91,16 +91,15 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			for s3 in list1:
 				for s4 in s3.relations:
 					print("=============== EXTRACTED RELATION ===============")
-					print(s4.entities)
 					newsentence1 = ""
 					for x1 in s3.tokens:
 						newsentence1 += " " + x1.word
 					print("Sentence: " + newsentence1)
 					confidence = s4.probabilities[relationName]
-					enTy1 = ""
-					enVa1 = ""
-					enTy2 = ""
-					enVa2 = ""
+					enTy1 = s4.entities[0].type
+					enVa1 = s4.entities[0].value
+					enTy2 = s4.entities[1].type
+					enVa2 = s4.entities[1].value
 					print("RelationType: " + relationName + " | Confidence= " + confidence + " | EntityType1= " + enTy1 + " |")
 					print("EntityValue1= " + enVa1 + " | EntityType2= " + enTy2 + " | EntityValue2= " + enVa2 + " |")
 					print("============== END OF RELATION DESC ==============")
