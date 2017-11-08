@@ -124,6 +124,9 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				query = enVa2 + " " + enVa1
 				count = 1
 			print("RelationType: " + tup[0] + "  | Confidence: " + str(tup[1]) + "		| Entity #1= " + tup[3] + " (" + tup[2] + ")	| Entity #2: " + tup[5] + " (" + tup[4] + ")")
+		if(count==0):
+			print("All possible queries have already been used! Breaking Program")
+			goodTuples = 1000
 		iterationNum += 1
 
 def main():
