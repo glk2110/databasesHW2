@@ -59,7 +59,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				print("Program could not extract text content from this web site; moving to the next one...")
 				continue
 			soup = BeautifulSoup(r)
-			texts = soup.find_all(['h1','h2','h3','p'])[0:2]
+			texts = soup.find_all(['h1','h2','h3','p'])
 			result = []
 			for text in texts:
 				result.append(text.text.encode('ascii','ignore'))
