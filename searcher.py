@@ -36,7 +36,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 	goodTuples = 0
 	extractedRelations = 0
 	totalExtractedRelations = 0
-	tuples = {}
+	tuples = []
 	while goodTuples < int(k):
 		totalExtractedRelations = goodTuples
 		service = build("customsearch", "v1",
@@ -105,10 +105,12 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 						print("RelationType: " + relationName + " | Confidence= " + confidence + " | EntityType1= " + enTy1 + " |")
 						print("EntityValue1= " + enVa1 + " | EntityType2= " + enTy2 + " | EntityValue2= " + enVa2 + " |")
 						print("============== END OF RELATION DESC ==============")
+						if float(confidence) >= float(threshold):
+							tuples.append({"relation": relationName, "confidence": confidence, "EntityType1": enTy1, "EntityValue1": enVa1, "EntityType2": enTy2, "EntityValue2": enVa2})
 			totalExtractedRelations += extractedRelations
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
-		goodTuples = 100
+		goodTuples = len(tuples)
 
 def main():
 	# Build a service object for interacting with the API. Visit
