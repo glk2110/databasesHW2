@@ -77,6 +77,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"ner.useSUTime": "0"
 				}
 			doc = client.annotate(text=result2, properties=properties)
+			print(doc)
 			newsentence = ""
 			rSentences = []
 			finalSentences = []
