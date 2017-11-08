@@ -104,7 +104,6 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 						elif re.ner == "ORGANIZATION":
 							tok2 = True
 				if tok1 == True and tok2 == True:
-					print(sen)
 					goodSentences.add(sen)
 			newsentence = ""
 			finalSentences = []
@@ -112,6 +111,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				for x in sentence.tokens:
 					newsentence += " " + x.word
 				finalSentences.append(newsentence)
+				print(newsentence)
 			print(finalSentences)
 			doc2 = client.annotate(text=finalSentences, properties=properties2)
 			list1 = []
