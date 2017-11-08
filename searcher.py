@@ -113,7 +113,12 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		goodTuples = len(tuples)
 		print("Number of tuples after pruning: " + str(goodTuples))
 		print("================== ALL RELATIONS =================")
-		for tup in tuples:
+		myTuples = list(tuples)
+		myTuples.sort(key=operator.itemgetter(1))
+		count = =
+		for tup in myTuples:
+			if count == 0:
+				query = enVa2 + " " + enVa1
 			print("RelationType: " + relationName + "  | Confidence: " + confidence + "		| Entity #1= " + enVa1 + " (" + enTy1 + ")	| Entity #2: " + enVa2 + " (" + enTy2 + ")")
 		iterationNum += 1
 
