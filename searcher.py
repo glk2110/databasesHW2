@@ -96,7 +96,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 					for x1 in s3.tokens:
 						newsentence1 += " " + x1.word
 					print("Sentence: " + newsentence1)
-					confidence = s4.probabilities
+					confidence = s4.probabilities[relationName]
 					enTy1 = ""
 					enVa1 = ""
 					enTy2 = ""
