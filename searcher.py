@@ -97,7 +97,11 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 					print("Sentence: " + newsentence1)
 					confidence = ""
 					enTy1 = ""
+					enVa1 = ""
+					enTy2 = ""
+					enVa2 = ""
 					print("RelationType: " + relationName + " | Confidence= " + confidence + " | EntityType1= " + enTy1 + " |")
+					print("EntityValue1= " + enVa1 + " | EntityType2= " + enTy2 + " | EntityValue2= " + enVa2 + " |")
 					print("============== END OF RELATION DESC ==============")
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
