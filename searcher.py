@@ -64,7 +64,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			for text in texts:
 				result.append(text.text.encode('ascii','ignore'))
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
-			properties1 = {
+			properties = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
 				"parse.model": "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz", #Must be present for the second pipeline!
 				"ner.useSUTime": "0"
@@ -74,7 +74,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"parse.model": "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz", #Must be present for the second pipeline!
 				"ner.useSUTime": "0"
 				}
-			doc = client.annotate(text=result, properties=properties1)
+			doc = client.annotate(text=result, properties=properties)
 			print(doc)
 			newsentence = ""
 			rSentences = []
