@@ -59,11 +59,11 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				print("Program could not extract text content from this web site; moving to the next one...")
 				continue
 			soup = BeautifulSoup(r)
-			texts = soup.find_all(['h1','h2','h3','p'])
+			texts = soup.find_all(['h1','h2','h3','p'])[0:2]
 			result = []
 			for text in texts:
 				result.append(text.text.encode('ascii','ignore'))
-			result2 = ''.join(result)
+			result2 = ["Bill Gates works at Microsoft.", "Sergei works at Google."]
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
@@ -76,7 +76,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"ner.useSUTime": "0"
 				}
 			doc = client.annotate(text=result2, properties=properties)
-			print(doc)
+			print(doc.tree_as_string())
 			newsentence = ""
 			rSentences = []
 			finalSentences = []
