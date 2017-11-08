@@ -119,7 +119,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				list1.append(s1)
 			for s3 in list1:
 				for s4 in s3.relations:
-					if relationValid(s4, relation):
+					if relationValid(s4, relation, relationName):
 						print("=============== EXTRACTED RELATION ===============")
 						extractedRelations += 1
 						newsentence1 = ""
@@ -156,23 +156,25 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			goodTuples = 1000
 		iterationNum += 1
 
-def relationValid(relation, re):
+def relationValid(relation, re, reName):
 	type1 = relation.entities[0].type
 	type2 = relation.entities[1].type
-	print(type1)
-	print(type2)
 	if int(re) == 1:
 		if((type1 == "PEOPLE" and type2 == "LOCATION") or (type1 == "LOCATION" and type2 == "PEOPLE")):
-			return True
+			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"]))
+				return True
 	elif int(re) == 2:
 		if((type1 == "LOCATION" and type2 == "LOCATION")):
-			return True
+			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"]))
+				return True
 	elif int(re) == 3:
 		if((type1 == "ORGANIZATION" and type2 == "LOCATION") or (type1 == "LOCATION" and type2 == "ORGANIZATION")):
-			return True
+			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"]))
+				return True
 	else:
 		if((type1 == "PEOPLE" and type2 == "ORGANIZATION") or (type1 == "ORGANIZATION" and type2 == "PEOPLE")):
-			return True
+			if(float(s4.probabilities[reName])>=float(s4.probabilities["Live_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Located_In"]) and float(s4.probabilities[reName])>=float(s4.probabilities["Work_For"]) and float(s4.probabilities[reName])>=float(s4.probabilities["OrgBased_In"]))
+				return True
 	return False
 
 def main():
