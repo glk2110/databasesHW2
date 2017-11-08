@@ -105,7 +105,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 						print("RelationType: " + relationName + " | Confidence= " + confidence + " | EntityType1= " + enTy1 + " |")
 						print("EntityValue1= " + enVa1 + " | EntityType2= " + enTy2 + " | EntityValue2= " + enVa2 + " |")
 						print("============== END OF RELATION DESC ==============")
-						if(float(confidence) >= float(threshold) && float(confidence) >= float(s4.probabilities["Live_in"]) && float(confidence) >= float(s4.probabilities["Located_In"]) && float(confidence) >= float(s4.probabilities["OrgBased_In"]) && float(confidence) >=float(s4.probabilities["Work_For"])):
+						if(float(confidence) >= float(threshold) && float(confidence) >= float(s4.probabilities["Live_in"]) && float(confidence) >= float(s4.probabilities["Located_In"]) && float(confidence) >= float(s4.probabilities["OrgBased_In"]) && float(confidence) >= float(s4.probabilities["OrgBased_In"])):
 							tuples.append({"relation": relationName, "confidence": confidence, "EntityType1": enTy1, "EntityValue1": enVa1, "EntityType2": enTy2, "EntityValue2": enVa2})
 						print(len(tuples))
 			totalExtractedRelations += extractedRelations
