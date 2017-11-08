@@ -117,7 +117,11 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			for s1 in doc2.sentences:
 				list1.append(s1)
 			for s3 in list1:
+				counterr = 0
 				for s4 in s3.relations:
+					if counterr == 2:
+						break
+					counterr += 1
 					if relationValid(s4, relation, relationName):
 						print("=============== EXTRACTED RELATION ===============")
 						extractedRelations += 1
