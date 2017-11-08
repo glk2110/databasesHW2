@@ -94,7 +94,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 					newsentence1 = ""
 					for x1 in s3.tokens:
 						newsentence1 += " " + x1.word
-					print("Sentence: " + newsentence)
+					print("Sentence: " + newsentence1)
 					print("============== END OF RELATION DESC ==============")
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
