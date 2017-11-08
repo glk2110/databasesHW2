@@ -162,7 +162,7 @@ def relationValid(relation, re):
 	print(type1)
 	print(type2)
 	if int(re) == 1:
-		if((type1 == "PERSON" and type2 == "LOCATION") or (type1 == "LOCATION" and type2 == "PERSON")):
+		if((type1 == "PEOPLE" and type2 == "LOCATION") or (type1 == "LOCATION" and type2 == "PEOPLE")):
 			return True
 	elif int(re) == 2:
 		if((type1 == "LOCATION" and type2 == "LOCATION")):
@@ -171,7 +171,7 @@ def relationValid(relation, re):
 		if((type1 == "ORGANIZATION" and type2 == "LOCATION") or (type1 == "LOCATION" and type2 == "ORGANIZATION")):
 			return True
 	else:
-		if((type1 == "PERSON" and type2 == "ORGANIZATION") or (type1 == "ORGANIZATION" and type2 == "PERSON")):
+		if((type1 == "PEOPLE" and type2 == "ORGANIZATION") or (type1 == "ORGANIZATION" and type2 == "PEOPLE")):
 			return True
 	return False
 
