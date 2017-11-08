@@ -120,7 +120,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		count = 0
 		queries.add(query)
 		for tup in myTuples:
-			if count == 0 && enVa2 + " " + enVa1 not in queries:
+			if(count == 0 and enVa2 + " " + enVa1 not in queries):
 				query = enVa2 + " " + enVa1
 				count = 1
 			print("RelationType: " + tup[0] + "  | Confidence: " + str(tup[1]) + "		| Entity #1= " + tup[3] + " (" + tup[2] + ")	| Entity #2: " + tup[5] + " (" + tup[4] + ")")
