@@ -75,7 +75,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"ner.useSUTime": "0"
 				}
 			doc = client.annotate(text=result, properties=properties)
-			goodSentences = set()
+			goodSentences = []
 			for sen in doc.sentences:
 				tok1 = False
 				tok2 = False
@@ -104,7 +104,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 						elif re.ner == "ORGANIZATION":
 							tok2 = True
 				if tok1 == True and tok2 == True:
-					goodSentences.add(sen)
+					goodSentences.append(sen)
 			newsentence = ""
 			finalSentences = []
 			for sentence in goodSentences:
