@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import urllib
 import re
 from NLPCore import NLPCoreClient
+import operator
 
 def isVisible(input1):
 	if input1.parent.name in ['style', 'script', 'head', 'title', '[document]']:
