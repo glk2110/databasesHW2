@@ -76,7 +76,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				}
 			doc = client.annotate(text=result, properties=properties)
 			for sen in doc.sentences:
-				for re in se.tokens:
+				for re in sen.tokens:
 					print(re.ner)
 			newsentence = ""
 			rSentences = []
