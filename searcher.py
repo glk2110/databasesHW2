@@ -75,20 +75,43 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				"ner.useSUTime": "0"
 				}
 			doc = client.annotate(text=result, properties=properties)
+			goodSentences = []
 			for sen in doc.sentences:
-				for re in sen.tokens:
-					print(re.ner)
+				tok1 = False
+				tok2 = False
+				if int(relation) == 1:
+					for re in sen.tokens:
+						if re.ner == "PERSON":
+							tok1 = True
+						elif re.ner == "LOCATION":
+							tok2 = True
+				elif int(relation) == 2:
+					for re in sen.tokens:
+						if re.ner == "LOCATION" and tok1 == False:
+							tok1 = True
+						elif tok1 == True and re.ner == "LOCATION":
+							tok2 = True
+				elif int(relation) == 3:
+					for re in sen.tokens:
+						if re.ner == "ORGANIZATION":
+							tok1 = True
+						elif re.ner == "LOCATION":
+							tok2 = True
+				else:
+					for re in sen.tokens:
+						if re.ner == "PERSON":
+							tok1 = True
+						elif re.ner == "ORGANIZATION":
+							tok2 = True
+				if tok1 == True and tok2 == True:
+					goodSentences.append(sen)
 			newsentence = ""
-			rSentences = []
 			finalSentences = []
-			for s in doc.sentences:
-				if s.relations:
-					rSentences.append(s)
-			for sentence in rSentences:
+			for sentence in goodSentences:
 				for x in sentence.tokens:
 					newsentence += " " + x.word
 				finalSentences.append(newsentence)
-			finalSentences = ["Bill Gates works at Microsoft.", "Sergei works at Google."]
+			print(finalSentences)
 			doc2 = client.annotate(text=finalSentences, properties=properties2)
 			list1 = []
 			list2 = []
