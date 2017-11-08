@@ -120,7 +120,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		for tup in myTuples:
 			if count == 0:
 				query = enVa2 + " " + enVa1
-			print("RelationType: " + tup[0] + "  | Confidence: " + tup[1] + "		| Entity #1= " + tup[3] + " (" + tup[2] + ")	| Entity #2: " + tup[5] + " (" + tup[4] + ")")
+			print("RelationType: " + tup[0] + "  | Confidence: " + str(tup[1]) + "		| Entity #1= " + tup[3] + " (" + tup[2] + ")	| Entity #2: " + tup[5] + " (" + tup[4] + ")")
 		iterationNum += 1
 
 def main():
