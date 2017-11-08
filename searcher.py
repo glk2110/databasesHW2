@@ -90,7 +90,9 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 				list1.append(s1)
 			for s3 in list1:
 				for s4 in s3.relations:
+					print("=============== EXTRACTED RELATION ===============")
 					print(s4)
+					print("============== END OF RELATION DESC ==============")
 			print("Relations extracted from this website: " + str(extractedRelations) + " (Overall: " + str(totalExtractedRelations) + ")")
 		iterationNum += 1
 		goodTuples = 100
