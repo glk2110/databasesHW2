@@ -115,7 +115,7 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 		print("================== ALL RELATIONS =================")
 		myTuples = list(tuples)
 		myTuples.sort(key=operator.itemgetter(1))
-		count = =
+		count = 0
 		for tup in myTuples:
 			if count == 0:
 				query = enVa2 + " " + enVa1
