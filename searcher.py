@@ -64,7 +64,6 @@ def makeQuery(apiKey, engineID, relation, threshold, query, k):
 			for text in texts:
 				result.append(text.text.encode('ascii','ignore'))
 			result2 = ''.join(result)
-			print(result2)
 			client = NLPCoreClient('stanford-corenlp-full-2017-06-09')
 			properties = {
 				"annotators": "tokenize,ssplit,pos,lemma,ner", #Second pipeline; leave out parse,relation for first
